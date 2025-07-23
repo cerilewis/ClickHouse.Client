@@ -43,6 +43,8 @@ internal static class HttpParameterFormatter
 #if NET6_0_OR_GREATER
             case DateType dt when value is DateOnly @do:
                 return @do.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+            case DateType dt when value is NodaTime.LocalDate localDate:
+                return NodaTime.Text.LocalDatePattern.Iso.Format(localDate);
 #endif
             case DateType dt:
                 return Convert.ToDateTime(value, CultureInfo.InvariantCulture).ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);

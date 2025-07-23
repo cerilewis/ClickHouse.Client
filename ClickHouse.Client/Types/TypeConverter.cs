@@ -178,6 +178,7 @@ internal static class TypeConverter
         ReverseMapping.Add(typeof(decimal), new Decimal128Type());
 #if NET6_0_OR_GREATER
         ReverseMapping.Add(typeof(DateOnly), new DateType());
+        ReverseMapping.Add(typeof(NodaTime.LocalDate), new DateType());
 #endif
         ReverseMapping[typeof(DateTime)] = new DateTimeType();
         ReverseMapping[typeof(DateTimeOffset)] = new DateTimeType();
